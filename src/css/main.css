@@ -1,0 +1,533 @@
+/* For mobile phones: */
+
+/* Variable declaration */
+/* Border box declaration */
+
+html {
+  @maintitle box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-right: 0 !important;
+  overflow: hidden;
+  --first-font: "Georgia", Times, serif; /* words printed in results */
+  --color1: #eee; /*bottom main body colour */
+  --color2: #222; /*header colour */
+  --color3: #ffd959; /*main tiles, words, border & title */
+  --color4: #574072; 
+}
+
+/* inherit border-box on all elements in the universe and before and after */
+*,
+*:before,
+maintit *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: var(--color1);
+  background-size: 64px 700px;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.App {
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 20vmax 75vmax 5vmax;
+}
+
+.corner {
+  display: none;
+}
+
+.app-header {
+  background-color: var(--color1);
+  font-size: 1rem;
+  grid-column: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-title-container {
+  grid-column: 3;
+  margin: 0vmax 0em 0vmax 0vmax;
+  padding: 0vmax 1vmax;
+  align-self: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--color3);
+  background: rgb(155, 26, 26);
+}
+
+.app-title {
+  margin: 0.5vmax 0rem 0.5vmax 0.5vmax;
+  letter-spacing: 1rem;
+  font-size: 4rem;
+  line-height: 56px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+/* what does this do?? */
+.scoreboard-wrapper { 
+/*  justify-self: end;*/
+  color: #eee;
+  background: var(--color3);
+  margin: 2vmax 2vmax 2vmax 2vmax;
+  padding: 1vmax;
+  max-width: 560px;
+  grid-column: span 1;
+  grid-row: 2;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  height: 392px;
+  border-top: 5px solid #444;
+  border-right: 5px solid #222;
+  border-bottom: 5px solid #222;
+  border-left: 5px solid #333;
+}
+
+/* entire scoreboard on left - keep the same? */
+/*this will part of what is changed - in line with the right side? */
+.scoreboard {
+  color: #eee;
+  background: #222;
+  grid-column: span 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 0vmax -4vmax 0vmax 2vmax; /* 1+ bottom longer, 2+ more on left, 4+ more on righter - box wider */
+  height: 392px;
+}
+
+/* following 3 are mini blocks. currently camouflage but can make font bigger. make big block respecctively bigger */
+
+/* block of current score */
+.scoreboard-score {
+  background: rgb(34, 34, 34);
+  color: var(--color1); /* changes font colour */
+  text-align: center;
+  align-self: center;
+  font-size: 4em;
+  grid-column: 1; /* order of 3 columns */ 
+  grid-row: 1;
+  margin-top: 2vh;
+  margin-right: 1vh;
+  margin-left: 1vh;
+  margin-bottom: 0;
+  font-family: serif;
+  /* how did georgia elsewhere */
+}
+
+/* block of currently found words */
+.scoreboard-found-words {
+  background: rgb(34, 34, 34);
+  color: var(--color1);
+  text-align: center;
+  align-self: center;
+  font-size: 4em;
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: 2vh;
+  margin-right: 1vh;
+  margin-left: 1vh;
+  margin-bottom: 0;
+  font-family: serif;}
+
+/* block of currently remaining words */
+.scoreboard-words-left {
+  background: #222;
+  color: var(--color1);
+  text-align: center;
+  align-self: center;
+  font-size: 3.9em;
+  grid-column: 3;
+  grid-row: 1;
+  margin-top: 2vh;
+  margin-right: 1vh;
+  margin-left: 1vh;
+  margin-bottom: 0;
+  font-family: serif;}
+
+/* this doesnt work does it? */
+  .timer {
+  text-align: center;
+  align-self: center;
+  font-size: 5em;
+  grid-column: 3;
+  grid-row: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Permanent Marker", cursive;
+}
+
+.scoreboard-start-button {
+  display: none;
+  grid-column: 1 / span 3;
+  grid-row: 2;
+  font-family: serif;
+  padding: 1vmax;
+  background: #1FE52B;
+  color: var(--color1);
+  border-width: 0;
+  font-weight: bold;
+  font-size: 5rem;
+  margin: 6vmax 4vmax 2vmax 4vmax; /*1+ move down, 2+ top left,  3+ higher, 4+ right (smaller)  */
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.scoreboard-surrender-button {
+  grid-column: 1 / span 3;
+  grid-row: 3;
+  font-family: serif;
+  padding: 1vmax;
+  background: #D81A0B;
+  color: var(--color1);
+  border-width: 0;
+  font-weight: bold;
+  font-size: 4rem;
+  margin: 2vmax 6vmax 3vmax 6vmax;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.scoreboard-instructions {
+  display: none;
+  margin-top: 2vmax;
+  font-family: "Permanent Marker", cursive;
+  font-size: 2.5rem;
+  color: var(--color3);
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 3;
+}
+
+.scoreboard-mobile-message {
+/*  display: none;*/
+  margin-top: 2vmax;
+  font-family: "Permanent Marker", cursive;
+  font-size: 2.5rem;
+  color: var(--color3);
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 3;
+}
+
+#scrabble {
+  justify-self: start;
+  margin: 2vmax 4vmax 2vmax 5vmax; 
+  text-align: center;
+  display: none;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  grid-column-start: 3;
+  grid-column-end: end;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  user-select: none;
+}
+
+.board-border {
+  position: relative;
+  background: var(--color3);
+  width: 560px;
+  height: 392px;
+  padding: 1vmax;
+  border-top: 5px solid #444;
+  border-right: 5px solid #222;
+  border-bottom: 5px solid #222;
+  border-left: 5px solid #333;
+}
+
+.board-square {
+  position: relative;
+  background-color: #222;
+  width: 56px;
+  height: 56px;
+}
+
+.dragged-over {
+  background: #111;
+}
+
+.board-square:nth-child(n + 33):nth-child(-n + 40) {
+  box-sizing: border-box;
+  border-bottom: 5px solid var(--color3);
+  border-top: 5px solid var(--color3);
+  background-color: var(--color2);
+}
+
+.board-square:nth-child(33) {
+  box-sizing: border-box;
+  border-left: 5px solid var(--color3);
+}
+
+.board-square:nth-child(40) {
+  box-sizing: border-box;
+  border-right: 5px solid var(--color3);
+}
+
+.tile {
+  position: absolute;
+  z-index: 2;
+  width: 100px;
+  height: 100px;
+  background: var(--color1);
+  cursor: move;
+  border-radius: 1px;
+  border-color: black;
+  box-shadow: 0.5px 0.5px 0 #eee, 1px 1px 0 #eee, 1.5px 1.5px 0 #eee,
+    2px 2px 0 #eee, 2.5px 2.5px 0 #eee, 3px 3px 0 #eee;
+}
+
+.is-dragging {
+  opacity: 0.7;
+}
+
+.is-established {
+  background: yellow;
+}
+
+.draggable {
+  cursor: move;
+}
+
+.tile-letter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #222;;
+  font-size: 10rem;
+  line-height: 100px; 
+  text-align: center;
+  font-weight: 700;
+}
+
+.tile-points {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 5px;
+  height: 5px;
+  line-height: 10px; /* alignment */
+  text-align: center;
+  font-size: 3rem;
+  color: #222;
+}
+
+.controls {
+  position: relative;
+  margin: 1rem auto;
+  text-align: center;
+  margin-bottom: 2vmax;
+}
+
+.resultsmodal {
+}
+
+.resultsmodal-title { /* "Results" */
+  text-align: center;
+  font-size: 8rem;
+  font-weight: bold;
+  color: #222;
+  line-height: 30rem; /* move position down */
+}
+
+.resultsmodal-scoreboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cols in found etc.. */
+  grid-template-rows: 1;
+}
+.resultsmodal-subheader { /*found, final score, missed, words found & missed */
+  font-size: 2.15rem;
+  font-weight: bold;
+  color: rgb(34, 34, 34);
+  line-height: 20px; /* alignment */
+}
+
+.resultsmodal-finalscore { /* numbers */
+  font-size: 5rem;
+  margin-bottom: 0;
+  font-weight: bold;
+  color: rgb(34, 34, 34);
+  line-height: 100px; /* alignment */
+
+}
+
+.resultsmodal-body {
+  text-align: center;
+  padding: 0vmax 4vmax;
+}
+
+.resultsmodal-wordsfound { /* text under words found */
+  font-family: var(--first-font);
+  font-size: 2em;
+}
+
+.resultsmodal-remainingwords {
+  font-family: var(--first-font);
+  font-size: 2em;
+}
+
+.resultsmodal-footer {
+  text-align: center;
+  padding: 1vmax 4vmax;
+}
+
+#resultsmodal-footer-button {
+  margin-top: 1vmax;
+  margin-bottom: 1vmax;
+  padding: 1vmax 2vmax; /* how much red around words */
+  transition: 0.25s ease-in-out;
+  background: #D81A0B;
+  color: #eee;
+  border-width: 0;
+  font-size: 3rem; /* changes size of whole button */
+  font-weight: bold;
+  margin: -105vmax 1vmax 1vmax 17vmax; /*1st+ down, 2+  left, 3rd whole thing up down 4th+ right */
+  cursor: pointer;
+}
+
+#resultsmodal-footer-button:focus {
+  outline: 0;
+}
+
+#resultsmodal-footer-button:hover {
+  transform: scale(1.1);
+  transition: 0.25s ease-in-out;
+}
+
+.footer {
+  grid-column: 1 / span 5;
+  display: grid;
+  align-items: center;
+}
+
+button {
+  padding: 1vmax;
+  transition: 0.25s ease-in-out;
+  background: #ffd959;
+  color: #222;
+  border-width: 0;
+  margin: 2vmax 2vmax 2vmax 2vmax;
+  cursor: pointer;
+  box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
+    2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:hover {
+  transform: scale(1.25);
+  transition: 0.25s ease-in-out;
+}
+
+hr {
+  margin-top: 1vmax;
+  margin-bottom: 1vmax;
+}
+
+
+@media only screen and (min-width: 1023px) {
+  /* For desktop: */
+  .App {
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 20vmin 75vmin 5vmin;
+  }
+
+  .corner {
+    display: inline;
+  }
+
+  .app-header {
+    background-color: var(--color2);
+    font-size: 1rem;
+    grid-column: 1 / span 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app-title-container {
+    grid-column: 3;
+    margin: 1vmax -1.2em 1vmax 2vmax;
+    padding: 0vmax 1vmax;
+    align-self: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--color3);
+    background: #222;
+  }
+
+  .app-title {
+    margin: 0.5vmax -2rem 0.5vmax 0.5vmax;
+    letter-spacing: 3rem;
+    font-size: 4rem;
+    line-height: 56px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  #scrabble {
+    display: block;
+  }
+
+  .scoreboard-wrapper {
+    justify-self: end;
+    color: #eee;
+    background: var(--color3);
+    margin: 2vmax 4vmax 2vmax 2vmax;
+    padding: 1vmax;
+    max-width: 560px;
+    grid-column: span 1;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: 392px;
+    border-top: 5px solid #444;
+    border-right: 5px solid #222;
+    border-bottom: 5px solid #222;
+    border-left: 5px solid #333;
+  }
+
+  .scoreboard-mobile-message {
+    display: none;
+  }
+
+  .scoreboard-start-button {
+    display: inline;
+  }
+
+  .scoreboard-instructions {
+    display: inline;
+  }
+}
