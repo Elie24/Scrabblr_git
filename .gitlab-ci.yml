@@ -11,12 +11,12 @@ before_script:
 test:
   stage: test
   script:
-    - npm test
+    - CI=false npm test
 
 pages:
   stage: deploy
   script:
-    - npm run build
+    - CI=false npm run build
     - rm -rf public
     - mv build public
   artifacts:
