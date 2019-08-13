@@ -1,21 +1,21 @@
 import React from "react";
 
 // external components
-import moment from "moment";
-import { times } from "lodash";
-import classNames from "classnames";
-import HTML5Backend from "react-dnd-html5-backend";
-import { DragSource, DropTarget, DragDropContext } from "react-dnd";
-import FlipMove from "react-flip-move";
+// import moment from "moment";
+// import { times } from "lodash";
+// import classNames from "classnames";
+// import HTML5Backend from "react-dnd-html5-backend";
+import { DragSource, DropTarget } from "react-dnd";
+// import FlipMove from "react-flip-move";
 
-// helping functions
-import helpers from "./helpers.js";
+// // helping functions
+// import helpers from "./helpers.js";
 
-// context from provider
-import { MyContext } from "./App.js";
+// // context from provider
+// import { MyContext } from "./App.js";
 
-const BOARD_WIDTH = 10;
-const BOARD_HEIGHT = 7;
+// const BOARD_WIDTH = 10;
+// const BOARD_HEIGHT = 7;
 const SQUARE_SIZE = 56;
 const TILE_OFFSET = 3;
 
