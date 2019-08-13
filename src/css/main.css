@@ -53,6 +53,7 @@ body {
   justify-content: center;
 }
 
+/* scrabble title in pop up tablet screen CAN MAKE THIS DISAPPEAR */
 .app-title-container {
   grid-column: 3;
   margin: 0vmax 0em 0vmax 0vmax;
@@ -64,8 +65,8 @@ body {
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
-  color: var(--color3);
-  background: rgb(155, 26, 26);
+  color: #eee;
+  background: #eee;
 }
 
 .app-title {
@@ -81,11 +82,11 @@ body {
   font-size: large;
 }
 
-/* what does this do?? */
+/* border wrap around of pop up */
 .scoreboard-wrapper { 
 /*  justify-self: end;*/
   color: #eee;
-  background: var(--color3);
+  background: #eee;
   margin: 2vmax 2vmax 2vmax 2vmax;
   padding: 1vmax;
   max-width: 560px;
@@ -94,17 +95,18 @@ body {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
   height: 392px;
-  border-top: 5px solid #444;
+  /* border-top: 5px #eee;
   border-right: 5px solid #222;
   border-bottom: 5px solid #222;
-  border-left: 5px solid #333;
+  border-left: 5px solid #333; */
+  /* no border */
 }
 
-/* entire scoreboard on left - keep the same? */
+/* this changes the scoreboard colour both in app screen and normal screen on the left */
 /*this will part of what is changed - in line with the right side? */
 .scoreboard {
-  color: #eee;
-  background: #222;
+  /* color: rgb(238, 238, 238); this isn't anything */
+  background: rgb(34, 34, 34);
   grid-column: span 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -180,7 +182,7 @@ body {
   grid-row: 2;
   font-family: serif;
   padding: 1vmax;
-  background: #1FE52B;
+  background: rgb(34, 31, 229);
   color: var(--color1);
   border-width: 0;
   font-weight: bold;
@@ -449,8 +451,8 @@ hr {
   margin-bottom: 1vmax;
 }
 
-
-@media only screen and (min-width: 1023px) {
+/* this changes the things on the main screen!!! */
+@media only screen /*and (min-width: 1023px)*/ {
   /* For desktop: */
   .App {
     text-align: center;
