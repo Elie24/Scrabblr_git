@@ -23,6 +23,7 @@ maintit *:after {
   box-sizing: inherit;
 }
 
+/* main background */
 body {
   background: var(--color1);
   background-size: 64px 700px;
@@ -53,7 +54,7 @@ body {
   justify-content: center;
 }
 
-/* scrabble title in pop up tablet screen CAN MAKE THIS DISAPPEAR */
+/* this doesnt come up anymore. scrabble title in pop up tablet screen CAN MAKE THIS DISAPPEAR */
 .app-title-container {
   grid-column: 3;
   margin: 0vmax 0em 0vmax 0vmax;
@@ -69,6 +70,7 @@ body {
   background: #eee;
 }
 
+/* title of pop up, not nec anymore */
 .app-title {
   margin: 0.5vmax 0rem 0.5vmax 0.5vmax;
   letter-spacing: 1rem;
@@ -79,7 +81,7 @@ body {
 }
 
 .App-intro {
-  font-size: large;
+  font-size: small;
 }
 
 /* border wrap around of pop up */
@@ -102,8 +104,7 @@ body {
   /* no border */
 }
 
-/* this changes the scoreboard colour both in app screen and normal screen on the left */
-/*this will part of what is changed - in line with the right side? */
+/* this changes the scoreboard colour */
 .scoreboard {
   /* color: rgb(238, 238, 238); this isn't anything */
   background: rgb(34, 34, 34);
@@ -111,8 +112,8 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  padding: 0vmax -4vmax 0vmax 2vmax; /* 1+ bottom longer, 2+ more on left, 4+ more on righter - box wider */
-  height: 392px;
+  padding: 0vmax 0vmax 0vmax 2vmax; /* 1+ bottom longer, 2+ more on left, 4+ more on righter - box wider */
+  height: 300px; /*matches border */
 }
 
 /* following 3 are mini blocks. currently camouflage but can make font bigger. make big block respecctively bigger */
@@ -123,7 +124,7 @@ body {
   color: var(--color1); /* changes font colour */
   text-align: center;
   align-self: center;
-  font-size: 4em;
+  font-size: 2em;
   grid-column: 1; /* order of 3 columns */ 
   grid-row: 1;
   margin-top: 2vh;
@@ -140,7 +141,7 @@ body {
   color: var(--color1);
   text-align: center;
   align-self: center;
-  font-size: 4em;
+  font-size: 2em;
   grid-column: 2;
   grid-row: 1;
   margin-top: 2vh;
@@ -155,7 +156,7 @@ body {
   color: var(--color1);
   text-align: center;
   align-self: center;
-  font-size: 3.9em;
+  font-size: 1.9em;
   grid-column: 3;
   grid-row: 1;
   margin-top: 2vh;
@@ -179,15 +180,15 @@ body {
 .scoreboard-start-button {
   display: none;
   grid-column: 1 / span 3;
-  grid-row: 2;
+  grid-row: 3;
   font-family: serif;
-  padding: 1vmax;
-  background: rgb(34, 31, 229);
+  padding: 0vmax;
+  background: rgb(17, 182, 39);
   color: var(--color1);
   border-width: 0;
   font-weight: bold;
   font-size: 5rem;
-  margin: 6vmax 4vmax 2vmax 4vmax; /*1+ move down, 2+ top left,  3+ higher, 4+ right (smaller)  */
+  margin: 6vmax 4vmax 4vmax 4vmax; /*1+ move down, 2+ top left,  3+ higher, 4+ right (smaller)  */
   cursor: pointer;
   box-shadow: none;
 }
@@ -201,8 +202,8 @@ body {
   color: var(--color1);
   border-width: 0;
   font-weight: bold;
-  font-size: 4rem;
-  margin: 2vmax 6vmax 3vmax 6vmax;
+  font-size: 3rem;
+  margin: 2vmax 3vmax 4vmax 15vmax;
   cursor: pointer;
   box-shadow: none;
 }
@@ -210,13 +211,14 @@ body {
 .scoreboard-instructions {
   display: none;
   margin-top: 2vmax;
-  font-family: "Permanent Marker", cursive;
+  font-family: serif;
   font-size: 2.5rem;
-  color: var(--color3);
+  color: var(--color1);
   grid-column: 1 / span 3;
   grid-row: 1 / span 3;
 }
 
+/* dont need this anymore */
 .scoreboard-mobile-message {
 /*  display: none;*/
   margin-top: 2vmax;
@@ -229,7 +231,7 @@ body {
 
 #scrabble {
   justify-self: start;
-  margin: 2vmax 4vmax 2vmax 5vmax; 
+  margin: 2vmax 1vmax 2vmax 5vmax; 
   text-align: center;
   display: none;
 }
@@ -247,11 +249,13 @@ body {
   user-select: none;
 }
 
+/* boarder of right - match left *
+YAY CAN CHANGE WIDTH */ 
 .board-border {
   position: relative;
-  background: var(--color3);
-  width: 560px;
-  height: 392px;
+  background: var(--color1);
+  width: 400px;
+  height: 300px;
   padding: 1vmax;
   border-top: 5px solid #444;
   border-right: 5px solid #222;
@@ -259,43 +263,48 @@ body {
   border-left: 5px solid #333;
 }
 
+/* right board itself, match border like on left */
+
 .board-square {
   position: relative;
   background-color: #222;
   width: 56px;
-  height: 56px;
+  height: 30px;
 }
 
+/* ??? */
 .dragged-over {
   background: #111;
 }
 
+/* rows for tiles */
 .board-square:nth-child(n + 33):nth-child(-n + 40) {
   box-sizing: border-box;
-  border-bottom: 5px solid var(--color3);
-  border-top: 5px solid var(--color3);
+  border-bottom: 3px solid var(--color1);
+  border-top: 3px solid var(--color1);
   background-color: var(--color2);
 }
 
 .board-square:nth-child(33) {
   box-sizing: border-box;
-  border-left: 5px solid var(--color3);
+  border-left: 3px solid var(--color1);
 }
 
 .board-square:nth-child(40) {
   box-sizing: border-box;
-  border-right: 5px solid var(--color3);
+  border-right: 3px solid var(--color1);
 }
+/* finshed */
 
 .tile {
   position: absolute;
   z-index: 2;
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   background: var(--color1);
   cursor: move;
   border-radius: 1px;
-  border-color: black;
+  border-color: white;
   box-shadow: 0.5px 0.5px 0 #eee, 1px 1px 0 #eee, 1.5px 1.5px 0 #eee,
     2px 2px 0 #eee, 2.5px 2.5px 0 #eee, 3px 3px 0 #eee;
 }
@@ -305,13 +314,14 @@ body {
 }
 
 .is-established {
-  background: yellow;
+  background: #eee;
 }
 
 .draggable {
   cursor: move;
 }
 
+/* play with this */
 .tile-letter {
   position: absolute;
   top: 0;
@@ -319,12 +329,13 @@ body {
   right: 0;
   bottom: 0;
   color: #222;;
-  font-size: 10rem;
-  line-height: 100px; 
+  font-size: 6rem;
+  line-height: 80px; 
   text-align: center;
   font-weight: 700;
 }
 
+/* lil numbers on tiles */
 .tile-points {
   position: absolute;
   top: 10px;
@@ -349,10 +360,10 @@ body {
 
 .resultsmodal-title { /* "Results" */
   text-align: center;
-  font-size: 8rem;
+  font-size: 5rem;
   font-weight: bold;
   color: #222;
-  line-height: 30rem; /* move position down */
+  line-height: 10rem; /* fixed everything header */
 }
 
 .resultsmodal-scoreboard {
@@ -361,7 +372,7 @@ body {
   grid-template-rows: 1;
 }
 .resultsmodal-subheader { /*found, final score, missed, words found & missed */
-  font-size: 2.15rem;
+  font-size: 3rem;
   font-weight: bold;
   color: rgb(34, 34, 34);
   line-height: 20px; /* alignment */
@@ -406,7 +417,7 @@ body {
   border-width: 0;
   font-size: 3rem; /* changes size of whole button */
   font-weight: bold;
-  margin: -105vmax 1vmax 1vmax 17vmax; /*1st+ down, 2+  left, 3rd whole thing up down 4th+ right */
+  margin: -250vmax 1vmax 1vmax 65vmax; /*1st+ down, 2+  left, 3rd whole thing up down 4th+ right */
   cursor: pointer;
 }
 
@@ -425,16 +436,17 @@ body {
   align-items: center;
 }
 
+/* around button */
 button {
   padding: 1vmax;
   transition: 0.25s ease-in-out;
-  background: #ffd959;
+  background: #222;
   color: #222;
   border-width: 0;
   margin: 2vmax 2vmax 2vmax 2vmax;
   cursor: pointer;
-  box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
-    2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259;
+  /* box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
+    2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259; */
 }
 
 button:focus {
@@ -454,43 +466,49 @@ hr {
 /* this changes the things on the main screen!!! */
 @media only screen /*and (min-width: 1023px)*/ {
   /* For desktop: */
-  .App {
+  
+  /* commenting this doesnt seem to do much */
+  
+  /* .App {
     text-align: center;
     align-content: center;
     justify-content: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 20vmin 75vmin 5vmin;
-  }
+  } */
 
   .corner {
     display: inline;
   }
 
+  /* header  */
   .app-header {
     background-color: var(--color2);
-    font-size: 1rem;
+    font-size: .1rem;
     grid-column: 1 / span 5;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
+  /* scrabblr on top. try make smaller */
   .app-title-container {
-    grid-column: 3;
-    margin: 1vmax -1.2em 1vmax 2vmax;
-    padding: 0vmax 1vmax;
+    /* grid-column: 3; */
+    /* margin: 1vmax -1.2em 1vmax 2vmax; */
+    /* padding: 0vmax 1vmax; */
     align-self: center;
     align-items: center;
     display: flex;
     justify-content: center;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2.5rem; /*not seeming to change */
     font-weight: bold;
-    color: var(--color3);
-    background: #222;
+    color: var(--color2);
+    background: #EEE;
   }
 
+  /* this is where i can change the size but header isn't change rn so fits */
   .app-title {
     margin: 0.5vmax -2rem 0.5vmax 0.5vmax;
     letter-spacing: 3rem;
@@ -499,7 +517,8 @@ hr {
     text-align: center;
     font-weight: 700;
   }
-
+ 
+  /* displays right side */
   #scrabble {
     display: block;
   }
@@ -507,23 +526,23 @@ hr {
   .scoreboard-wrapper {
     justify-self: end;
     color: #eee;
-    background: var(--color3);
-    margin: 2vmax 4vmax 2vmax 2vmax;
+    background: #EEE;
+    margin: 2vmax -20vmax 1vmax 1vmax; /*makes board bigger or smaller! */
     padding: 1vmax;
-    max-width: 560px;
+    max-width: 400px;
     grid-column: span 1;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    height: 392px;
+    height: 300px; /* match the board */
     border-top: 5px solid #444;
     border-right: 5px solid #222;
     border-bottom: 5px solid #222;
     border-left: 5px solid #333;
   }
 
-  .scoreboard-mobile-message {
+  /* .scoreboard-mobile-message {
     display: none;
-  }
+  } */
 
   .scoreboard-start-button {
     display: inline;
