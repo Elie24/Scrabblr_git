@@ -129,7 +129,7 @@ body {
 
 /* this is where i can change the size but header isn't change rn so fits */
 .app-title {
-  margin: -10vmax -15rem 0.5vmax 0.5vmax; /* this moved to top, 3rd */
+  margin: -10vmax -30rem 0.5vmax 0.5vmax; /* this moved to top, 3rd */
   letter-spacing: 4rem;
    font-size: 5rem; */
    line-height: 80px;
@@ -144,11 +144,11 @@ body {
   background: #EEE;
   margin: -10vmax -12vmax 0vmax -10vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
   padding: 1vmax;
-  max-width: 700px;
+  max-width: 500px;
   grid-column: span 1;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  height: 500px; /* match the board */
+  height: 480px; /* match the board */
   border-top: 5px solid #444;
   border-right: 5px solid #222;
   border-bottom: 5px solid #222;
@@ -163,16 +163,16 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  padding: 0vmax 0vmax 0vmax 2vmax; /* 1+ bottom longer, 2+ more on left, 4+ more on righter - box wider */
-  height: 500px; /*matches border */
+  padding: 0vmax 0vmax 0vmax 0vmax; /* 1+ bottom longer, 2+ more on left, 4+ more on righter - box wider */
+  height: 480px; /*matches border */
 }
 .scoreboard-start-button {
   display: none;
   grid-column: 1 / span 3;
-  grid-row: 2;
+  grid-row: 3;
   font-family: serif;
   padding: 0vmax;
-  background: rgb(228, 140, 9);
+  background: rgb(22, 235, 33);
   color: var(--color1);
   border-width: 0;
   font-weight: bold;
@@ -189,7 +189,7 @@ body {
   color: var(--color1); /* changes font colour */
   text-align: center;
   align-self: center;
-  font-size: 2em;
+  font-size: 3em;
   grid-column: 1; /* order of 3 columns */ 
   grid-row: 1;
   margin-top: 2vh;
@@ -206,7 +206,7 @@ body {
   color: var(--color1);
   text-align: center;
   align-self: center;
-  font-size: 2em;
+  font-size: 3em;
   grid-column: 2;
   grid-row: 1;
   margin-top: 2vh;
@@ -221,7 +221,7 @@ body {
   color: var(--color1);
   text-align: center;
   align-self: center;
-  font-size: 1.9em;
+  font-size: 2.9em;
   grid-column: 3;
   grid-row: 1;
   margin-top: 2vh;
@@ -253,16 +253,16 @@ body {
   border-width: 0;
   font-weight: bold;
   font-size: 3rem;
-  margin: 2vmax 3vmax 4vmax 15vmax;
+  margin: 0vmax 5vmax 4vmax 5vmax;
   cursor: pointer;
   box-shadow: none;
 }
 
 .scoreboard-instructions {
   display: none;
-  margin-top: 2vmax;
+  margin-top: 1vmax;
   font-family: serif;
-  font-size: 5rem;
+  font-size: 4.5rem;
   color: var(--color1);
   grid-column: 1 / span 3;
   grid-row: 1 / span 3;
@@ -305,9 +305,9 @@ YAY CAN CHANGE WIDTH */
   position: relative;
   background: var(--color1);
   /* inserted: */
- margin: 10vmax -0vmax 0vmax 10vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
+ margin: 10vmax 2vmax 0vmax 10vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
   width: 700px;
-  height: 500px;
+  height: 480px;
   padding: 1vmax;
   border-top: 5px solid #444;
   border-right: 5px solid #222;
@@ -351,8 +351,8 @@ YAY CAN CHANGE WIDTH */
 .tile {
   position: absolute;
   z-index: 2;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   background: var(--color1);
   cursor: move;
   border-radius: 1px;
@@ -381,8 +381,8 @@ YAY CAN CHANGE WIDTH */
   right: 0;
   bottom: 0;
   color: #222;;
-  font-size: 6rem;
-  line-height: 80px; 
+  font-size: 8rem;
+  line-height: 90px; 
   text-align: center;
   font-weight: 700;
 }
@@ -412,10 +412,10 @@ YAY CAN CHANGE WIDTH */
 
 .resultsmodal-title { /* "Results" */
   text-align: center;
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: bold;
   color: #222;
-  line-height: 10rem; /* fixed everything header */
+  line-height: 13rem; /* got rid of huge white space fixed everything header */
 }
 
 .resultsmodal-scoreboard {
@@ -424,7 +424,7 @@ YAY CAN CHANGE WIDTH */
   grid-template-rows: 1;
 }
 .resultsmodal-subheader { /*found, final score, missed, words found & missed */
-  font-size: 3rem;
+  font-size: 2.1rem;
   font-weight: bold;
   color: rgb(34, 34, 34);
   line-height: 20px; /* alignment */
@@ -467,9 +467,9 @@ YAY CAN CHANGE WIDTH */
   background: #D81A0B;
   color: #eee;
   border-width: 0;
-  font-size: 3rem; /* changes size of whole button */
+  font-size: 2rem; /* changes size of whole button */
   font-weight: bold;
-  margin: -250vmax 1vmax 1vmax 65vmax; /*1st+ down, 2+  left, 3rd whole thing up down 4th+ right */
+  margin: -95vmax 0vmax 0vmax 19vmax; /*1st+ down, 2+  left, 3rd whole thing up down 4th+ right */
   cursor: pointer;
 }
 
