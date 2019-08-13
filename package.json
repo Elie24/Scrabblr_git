@@ -1,6 +1,7 @@
 {
   "name": "word-flipper",
   "version": "1.0.0",
+  "homepage": "https://elie_l.gitlab.io/scrabblr",
   "private": true,
   "dependencies": {
     "babel-plugin-transform-decorators": "^6.24.1",
