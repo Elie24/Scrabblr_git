@@ -23,15 +23,18 @@ maintit *:after {
   box-sizing: inherit;
 }
 
-/* main background */
+/* main background to fit 1920 1200 */
 body {
   background: var(--color1);
-  background-size: 64px 700px;
+  background-size: 1920px 1200px;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
 
+/* not necessary anymore */
+
+/* doesnt do much */
 .App {
   text-align: center;
   align-content: center;
@@ -45,6 +48,7 @@ body {
   display: none;
 }
 
+/* thought this was black on top but not actually  */
 .app-header {
   background-color: var(--color1);
   font-size: 1rem;
@@ -104,6 +108,8 @@ body {
   /* no border */
 }
 
+/* not necessary anymore */
+
 /* this changes the scoreboard colour */
 .scoreboard {
   /* color: rgb(238, 238, 238); this isn't anything */
@@ -113,9 +119,23 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   padding: 0vmax 0vmax 0vmax 2vmax; /* 1+ bottom longer, 2+ more on left, 4+ more on righter - box wider */
-  height: 300px; /*matches border */
+  height: 800px; /*matches border */
 }
-
+.scoreboard-start-button {
+  display: none;
+  grid-column: 1 / span 3;
+  grid-row: 2;
+  font-family: serif;
+  padding: 0vmax;
+  background: rgb(17, 182, 39);
+  color: var(--color1);
+  border-width: 0;
+  font-weight: bold;
+  font-size: 5rem;
+  margin: 6vmax 4vmax 4vmax 4vmax; /*1+ move down, 2+ top left,  3+ higher, 4+ right (smaller)  */
+  cursor: pointer;
+  box-shadow: none;
+}
 /* following 3 are mini blocks. currently camouflage but can make font bigger. make big block respecctively bigger */
 
 /* block of current score */
@@ -177,21 +197,6 @@ body {
   font-family: "Permanent Marker", cursive;
 }
 
-.scoreboard-start-button {
-  display: none;
-  grid-column: 1 / span 3;
-  grid-row: 3;
-  font-family: serif;
-  padding: 0vmax;
-  background: rgb(17, 182, 39);
-  color: var(--color1);
-  border-width: 0;
-  font-weight: bold;
-  font-size: 5rem;
-  margin: 6vmax 4vmax 4vmax 4vmax; /*1+ move down, 2+ top left,  3+ higher, 4+ right (smaller)  */
-  cursor: pointer;
-  box-shadow: none;
-}
 
 .scoreboard-surrender-button {
   grid-column: 1 / span 3;
@@ -482,15 +487,15 @@ hr {
     display: inline;
   }
 
-  /* header  */
-  .app-header {
-    background-color: var(--color2);
-    font-size: .1rem;
-    grid-column: 1 / span 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  /* HERE header is  */
+   .app-header {
+    /* background-color: var(--color3); */
+    /* font-size: .1rem; */
+    /* grid-column: 1 / span 5; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+  } 
 
   /* scrabblr on top. try make smaller */
   .app-title-container {
@@ -510,12 +515,13 @@ hr {
 
   /* this is where i can change the size but header isn't change rn so fits */
   .app-title {
-    margin: 0.5vmax -2rem 0.5vmax 0.5vmax;
-    letter-spacing: 3rem;
-    font-size: 4rem;
-    line-height: 56px;
+    margin: -10vmax -2rem 0.5vmax 0.5vmax; /* this moved to top */
+    letter-spacing: 4rem;
+    /* font-size: 4rem; */
+    /* line-height: 56px; */
+    line-height: 100px;
     text-align: center;
-    font-weight: 700;
+    font-weight: 300;
   }
  
   /* displays right side */
@@ -527,13 +533,13 @@ hr {
     justify-self: end;
     color: #eee;
     background: #EEE;
-    margin: 2vmax -20vmax 1vmax 1vmax; /*makes board bigger or smaller! */
+    margin: -10vmax 40vmax 10vmax 1vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
     padding: 1vmax;
-    max-width: 400px;
+    max-width: 800px;
     grid-column: span 1;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    height: 300px; /* match the board */
+    height: 800px; /* match the board */
     border-top: 5px solid #444;
     border-right: 5px solid #222;
     border-bottom: 5px solid #222;
