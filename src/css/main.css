@@ -189,7 +189,7 @@ body {
   color: var(--color1); /* changes font colour */
   text-align: center;
   align-self: center;
-  font-size: 3em;
+  font-size: 1.9em;
   grid-column: 1; /* order of 3 columns */ 
   grid-row: 1;
   margin-top: 2vh;
@@ -206,7 +206,7 @@ body {
   color: var(--color1);
   text-align: center;
   align-self: center;
-  font-size: 3em;
+  font-size: 1.9em;
   grid-column: 2;
   grid-row: 1;
   margin-top: 2vh;
@@ -221,7 +221,7 @@ body {
   color: var(--color1);
   text-align: center;
   align-self: center;
-  font-size: 2.9em;
+  font-size: 1.8em;
   grid-column: 3;
   grid-row: 1;
   margin-top: 2vh;
@@ -253,7 +253,7 @@ body {
   border-width: 0;
   font-weight: bold;
   font-size: 3rem;
-  margin: 0vmax 5vmax 4vmax 5vmax;
+  margin: 2vmax 6vmax 4vmax 5vmax;
   cursor: pointer;
   box-shadow: none;
 }
