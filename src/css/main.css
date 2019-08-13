@@ -114,9 +114,9 @@ body {
   justify-self: end;
   color: #eee;
   background: #EEE;
-  margin: -10vmax 40vmax 10vmax 1vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
+  margin: -10vmax 10vmax 0vmax -10vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
   padding: 1vmax;
-  max-width: 2000px;
+  max-width: 700px;
   grid-column: span 1;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -144,7 +144,7 @@ body {
   grid-row: 2;
   font-family: serif;
   padding: 0vmax;
-  background: rgb(28, 17, 182);
+  background: rgb(17, 182, 168);
   color: var(--color1);
   border-width: 0;
   font-weight: bold;
@@ -276,8 +276,9 @@ YAY CAN CHANGE WIDTH */
 .board-border {
   position: relative;
   background: var(--color1);
-  width: 400px;
-  height: 300px;
+ margin: 9.5vmax -10vmax 0vmax 10vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
+  width: 700px;
+  height: 600px;
   padding: 1vmax;
   border-top: 5px solid #444;
   border-right: 5px solid #222;
@@ -290,8 +291,8 @@ YAY CAN CHANGE WIDTH */
 .board-square {
   position: relative;
   background-color: #222;
-  width: 56px;
-  height: 30px;
+  width: 100px;
+  height: 60px;
 }
 
 /* ??? */
@@ -527,18 +528,19 @@ hr {
     font-size: 2.5rem; /*not seeming to change */
     font-weight: bold;
     color: var(--color2);
-    background: #EEE;
+    background: rgb(187, 15, 15);
+    /* changes text of letters but not bground */
   }
 
   /* this is where i can change the size but header isn't change rn so fits */
   .app-title {
-    margin: -10vmax -2rem 0.5vmax 0.5vmax; /* this moved to top */
+    margin: -10vmax -2rem 0.5vmax 0.5vmax; /* this moved to top, 3rd */
     letter-spacing: 4rem;
     /* font-size: 4rem; */
     /* line-height: 56px; */
     line-height: 100px;
     text-align: center;
-    font-weight: 300;
+    font-weight: 500;
   }
  
   /* displays right side */
