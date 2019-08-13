@@ -110,6 +110,23 @@ body {
 
 /* not necessary anymore */
 
+.scoreboard-wrapper {
+  justify-self: end;
+  color: #eee;
+  background: #EEE;
+  margin: -10vmax 40vmax 10vmax 1vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
+  padding: 1vmax;
+  max-width: 2000px;
+  grid-column: span 1;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  height: 600px; /* match the board */
+  border-top: 5px solid #444;
+  border-right: 5px solid #222;
+  border-bottom: 5px solid #222;
+  border-left: 5px solid #333;
+}
+
 /* this changes the scoreboard colour */
 .scoreboard {
   /* color: rgb(238, 238, 238); this isn't anything */
@@ -119,7 +136,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   padding: 0vmax 0vmax 0vmax 2vmax; /* 1+ bottom longer, 2+ more on left, 4+ more on righter - box wider */
-  height: 800px; /*matches border */
+  height: 600px; /*matches border */
 }
 .scoreboard-start-button {
   display: none;
@@ -529,23 +546,7 @@ hr {
     display: block;
   }
 
-  .scoreboard-wrapper {
-    justify-self: end;
-    color: #eee;
-    background: #EEE;
-    margin: -10vmax 40vmax 10vmax 1vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
-    padding: 1vmax;
-    max-width: 800px;
-    grid-column: span 1;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    height: 800px; /* match the board */
-    border-top: 5px solid #444;
-    border-right: 5px solid #222;
-    border-bottom: 5px solid #222;
-    border-left: 5px solid #333;
-  }
-
+ 
   /* .scoreboard-mobile-message {
     display: none;
   } */
