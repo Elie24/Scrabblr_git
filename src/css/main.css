@@ -144,7 +144,7 @@ body {
   background: #EEE;
   margin: -10vmax -12vmax 0vmax -10vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
   padding: 1vmax;
-  max-width: 500px;
+  max-width: 400px;
   grid-column: span 1;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -172,7 +172,7 @@ body {
   grid-row: 3;
   font-family: serif;
   padding: 0vmax;
-  background: rgb(22, 235, 33);
+  background: rgb(2, 245, 14);
   color: var(--color1);
   border-width: 0;
   font-weight: bold;
@@ -321,7 +321,7 @@ YAY CAN CHANGE WIDTH */
   position: relative;
   background-color: #222;
   width: 100px;
-  height: 50px;
+  height: 48px;
 }
 
 /* ??? */
