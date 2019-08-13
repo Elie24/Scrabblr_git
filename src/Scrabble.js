@@ -10,7 +10,8 @@ import Tile from "./Tile.js";
 import HTML5Backend from "react-dnd-html5-backend";
 import {DragDropContext } from "react-dnd";
 import FlipMove from "react-flip-move";
-// import helpers from "./helpers.js";
+// eslint-disable-next-line
+import "./helpers.js";
 import { MyContext } from "./App.js";
 
 const BOARD_WIDTH = 10;
