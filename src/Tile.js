@@ -15,13 +15,14 @@ import { DragSource, DropTarget } from "react-dnd";
 
 // const BOARD_WIDTH = 10;
 // const BOARD_HEIGHT = 7;
-const SQUARE_SIZE = 56;
+const SQUARE_SIZE = 70  ;
 const TILE_OFFSET = 3;
 
 const tileSource = {
   beginDrag(props) {
     return props;
   }
+  
 };
 
 const tileTarget = {

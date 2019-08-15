@@ -7,17 +7,17 @@ import Tile from "./Tile.js";
 // import moment from "moment";
 // import { times } from "lodash";
 // import classNames from "classnames";
-import TouchBackend from "react-dnd-touch-backend";
-import {DragDropContext } from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
+import { DragSource, DropTarget, DragDropContext } from "react-dnd";
 import FlipMove from "react-flip-move";
 // eslint-disable-next-line
-import "./helpers.js";
+import helpers from "./helpers.js";
 import { MyContext } from "./App.js";
 
 const BOARD_WIDTH = 10;
 const BOARD_HEIGHT = 7;
 
-@DragDropContext(TouchBackend)
+@DragDropContext(HTML5Backend)
 class Scrabble extends React.Component {
   constructor() {
     super();
@@ -89,3 +89,12 @@ class Scrabble extends React.Component {
 }
 
 export default Scrabble;
+
+
+
+
+// for touch:
+// import TouchBackend from "react-dnd-touch-backend";
+
+
+// @DragDropContext(TouchBackend)

@@ -5,8 +5,8 @@
 
 html {
   @maintitle box-sizing: border-box;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  /* overflow-y: scroll;
+  overflow-x: hidden; */
   margin-right: 0 !important;
   overflow: hidden;
   --first-font: "Georgia", Times, serif; /* words printed in results */
@@ -131,7 +131,7 @@ body {
 .app-title {
   margin: -10vmax -30rem 0.5vmax 0.5vmax; /* this moved to top, 3rd */
   letter-spacing: 4rem;
-   font-size: 5rem; */
+   font-size: 5rem; 
    line-height: 80px;
   line-height: 100px;
   text-align: center;
@@ -321,38 +321,37 @@ YAY CAN CHANGE WIDTH */
   position: relative;
   background-color: #222;
   width: 100px;
-  height: 48px;
+  height: 56px;
 }
 
-/* ??? */
+
 .dragged-over {
   background: #111;
 }
 
-/* rows for tiles */
-.board-square:nth-child(n + 33):nth-child(-n + 40) {
+/* .width-40:.width  */
+ .board-square:nth-child(n + 33):nth-child(-n + 40)  {
   box-sizing: border-box;
-  border-bottom: 3px solid var(--color1);
-  border-top: 3px solid var(--color1);
+  border-bottom: 5px solid var(--color1); 
+  border-top: 5px solid var(--color1);
   background-color: var(--color2);
 }
 
 .board-square:nth-child(33) {
   box-sizing: border-box;
-  border-left: 3px solid var(--color1);
+  border-left: 5px solid var(--color1);
 }
 
 .board-square:nth-child(40) {
   box-sizing: border-box;
-  border-right: 3px solid var(--color1);
+  border-right: 5px solid var(--color1);
 }
-/* finshed */
 
 .tile {
   position: absolute;
   z-index: 2;
-  width: 80px;
-  height: 80px;
+  width: 56px;
+  height: 56px;
   background: var(--color1);
   cursor: move;
   border-radius: 1px;
@@ -373,30 +372,28 @@ YAY CAN CHANGE WIDTH */
   cursor: move;
 }
 
-/* play with this */
 .tile-letter {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  color: #222;;
-  font-size: 8rem;
-  line-height: 90px; 
+  color: #222;
+  font-size: 2.5rem;
+  line-height: 56px;
   text-align: center;
   font-weight: 700;
 }
 
-/* lil numbers on tiles */
 .tile-points {
   position: absolute;
   top: 10px;
   right: 10px;
   width: 5px;
   height: 5px;
-  line-height: 10px; /* alignment */
+  line-height: 5px;
   text-align: center;
-  font-size: 3rem;
+  font-size: 1.25rem;
   color: #222;
 }
 
@@ -406,6 +403,7 @@ YAY CAN CHANGE WIDTH */
   text-align: center;
   margin-bottom: 2vmax;
 }
+
 
 .resultsmodal {
 }
