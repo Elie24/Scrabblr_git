@@ -26,7 +26,7 @@ class MyProvider extends React.Component {
   }
 
   // set tiles at starting position
-  resetTilePositions = () => {  
+  resetTilePositions = () => {
     for (let i = 0; i < this.state.tiles.length; i++) {
       let temp = this.state.tiles;
       temp[i].x = 1 + i;
@@ -58,17 +58,15 @@ class MyProvider extends React.Component {
     this.resetTilePositions();
     this.generateMatches(word);
     this.setState({ isInGameLoop: true, foundWords: [], score: 0 });
-    // this.playSound("woodshuffle");
+    this.playSound("woodshuffle");
   };
 
-  // this state tiles
-  // get a word & shuffle
+  // get a word
   getWord = () => {
     let wordLength = 8;
     let word = this.getWordFromDictionary(wordLength);
     word = this.shuffleArray(word.split("")).join("");
     this.setState({ randomWord: word });
-    // checks every little word combo
     for (let i = 0; i < word.length; i++) {
       let temp = this.state.tiles;
       temp[i].letter = word[i].toUpperCase();
@@ -83,7 +81,7 @@ class MyProvider extends React.Component {
       isInGameLoop: false,
       tiles: this.state.startingTiles
     });
-    // this.playSound("wood1");
+    this.playSound("wood1");
     this.handleShowResultsModal();
   };
 
@@ -330,9 +328,8 @@ class App extends React.Component {
         <MyContext.Consumer>
           {context => (
             <React.Fragment>
-              <GithubCorner //this changes the corner guy
-                //href="https://github.com/nvincenthill/word-flipper" got rid of the link
-                //this is how we do buttons??
+              <GithubCorner
+                href="https://github.com/nvincenthill/word-flipper"
                 octoColor="#222"
                 bannerColor="#ffd959"
                 className="corner"
@@ -360,15 +357,3 @@ export default App;
 
 // export context
 export { MyContext };
-
-/*
-const http = require('http');
-let app = http.createServer((req,res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World!\n');
-
-});
-
-app.listen(3001, '211.31.83.1');
-console.log('Node server running on port 3001');
-*/ 
