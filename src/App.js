@@ -26,7 +26,7 @@ class MyProvider extends React.Component {
   }
 
   // set tiles at starting position
-  resetTilePositions = () => {
+  resetTilePositions = () => {  
     for (let i = 0; i < this.state.tiles.length; i++) {
       let temp = this.state.tiles;
       temp[i].x = 1 + i;
@@ -58,15 +58,17 @@ class MyProvider extends React.Component {
     this.resetTilePositions();
     this.generateMatches(word);
     this.setState({ isInGameLoop: true, foundWords: [], score: 0 });
-    this.playSound("woodshuffle");
+    // this.playSound("woodshuffle");
   };
 
-  // get a word
+  // this state tiles
+  // get a word & shuffle
   getWord = () => {
     let wordLength = 8;
     let word = this.getWordFromDictionary(wordLength);
     word = this.shuffleArray(word.split("")).join("");
     this.setState({ randomWord: word });
+    // checks every little word combo
     for (let i = 0; i < word.length; i++) {
       let temp = this.state.tiles;
       temp[i].letter = word[i].toUpperCase();
@@ -81,9 +83,8 @@ class MyProvider extends React.Component {
       isInGameLoop: false,
       tiles: this.state.startingTiles
     });
-    this.playSound("wood1");
+    // this.playSound("wood1");
     this.handleShowResultsModal();
-    //sound how to get other sounds in?
   };
 
   // check if word is a valid english word
