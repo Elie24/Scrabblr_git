@@ -5,15 +5,15 @@
 
 html {
   @maintitle box-sizing: border-box;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  /* overflow-y: scroll;
+  overflow-x: hidden; */
   margin-right: 0 !important;
   overflow: hidden;
-  --first-font: "Permanent Marker", cursive;
-  --color1: #eee;
-  --color2: #222;
-  --color3: #ffd959;
-  --color4: #725c40;
+  --first-font: "Georgia", Times, serif; /* words printed in results */
+  --color1: #eee; /*bottom main body colour */
+  --color2: #222; /*header colour */
+  --color3: #ffd959; /*main tiles, words, border & title */
+  --color4: #574072; 
 }
 
 /* inherit border-box on all elements in the universe and before and after */
@@ -23,14 +23,18 @@ maintit *:after {
   box-sizing: inherit;
 }
 
+/* main background to fit 1920 1200 */
 body {
   background: var(--color1);
-  background-size: 64px 128px;
+  background-size: 1920px 1200px;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
 
+/* not necessary anymore */
+
+/* doesnt do much */
 .App {
   text-align: center;
   align-content: center;
@@ -44,8 +48,9 @@ body {
   display: none;
 }
 
+/* thought this was black on top but not actually  */
 .app-header {
-  background-color: var(--color2);
+  background-color: var(--color1);
   font-size: 1rem;
   grid-column: 100%;
   display: flex;
@@ -53,6 +58,7 @@ body {
   justify-content: center;
 }
 
+/* this doesnt come up anymore. scrabble title in pop up tablet screen CAN MAKE THIS DISAPPEAR */
 .app-title-container {
   grid-column: 3;
   margin: 0vmax 0em 0vmax 0vmax;
@@ -64,10 +70,11 @@ body {
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
-  color: var(--color3);
-  background: #222;
+  color: #eee;
+  background: #eee;
 }
 
+/* title of pop up, not nec anymore */
 .app-title {
   margin: 0.5vmax 0rem 0.5vmax 0.5vmax;
   letter-spacing: 1rem;
@@ -78,13 +85,14 @@ body {
 }
 
 .App-intro {
-  font-size: large;
+  font-size: small;
 }
 
-.scoreboard-wrapper {
+/* border wrap around of pop up */
+.scoreboard-wrapper { 
 /*  justify-self: end;*/
   color: #eee;
-  background: var(--color3);
+  background: #eee;
   margin: 2vmax 2vmax 2vmax 2vmax;
   padding: 1vmax;
   max-width: 560px;
@@ -93,72 +101,140 @@ body {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
   height: 392px;
+  /* border-top: 5px #eee;
+  border-right: 5px solid #222;
+  border-bottom: 5px solid #222;
+  border-left: 5px solid #333; */
+  /* no border */
+}
+
+/* not necessary anymore */
+
+/* scrabblr on top. try make smaller */
+.app-title-container {
+  /* grid-column: 3; */
+  /* margin: 1vmax -1.2em 1vmax 2vmax; */
+  /* padding: 0vmax 1vmax; */
+  align-self: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 2.5rem; /*not seeming to change */
+  font-weight: bold;
+  color: var(--color2);
+  background: rgb(187, 15, 15);
+  /* changes text of letters but not bground */
+}
+
+/* this is where i can change the size but header isn't change rn so fits */
+.app-title {
+  margin: -10vmax -30rem 0.5vmax 0.5vmax; /* this moved to top, 3rd */
+  letter-spacing: 4rem;
+   font-size: 5rem; 
+   line-height: 80px;
+  line-height: 100px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.scoreboard-wrapper {
+  justify-self: end;
+  color: #eee;
+  background: #EEE;
+  margin: -10vmax -12vmax 0vmax -10vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
+  padding: 1vmax;
+  max-width: 400px;
+  grid-column: span 1;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  height: 480px; /* match the board */
   border-top: 5px solid #444;
   border-right: 5px solid #222;
   border-bottom: 5px solid #222;
   border-left: 5px solid #333;
 }
 
+/* this changes the scoreboard colour */
 .scoreboard {
-  color: #eee;
-  background: #222;
+  /* color: rgb(238, 238, 238); this isn't anything */
+  background: rgb(34, 34, 34);
   grid-column: span 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  padding: 0vmax 2vmax 0vmax 2vmax;
-  height: 392px;
+  padding: 0vmax 0vmax 0vmax 0vmax; /* 1+ bottom longer, 2+ more on left, 4+ more on righter - box wider */
+  height: 480px; /*matches border */
 }
+.scoreboard-start-button {
+  display: none;
+  grid-column: 1 / span 3;
+  grid-row: 3;
+  font-family: serif;
+  padding: 0vmax;
+  background: rgb(2, 245, 14);
+  color: var(--color1);
+  border-width: 0;
+  font-weight: bold;
+  font-size: 5rem;
+  margin: 6vmax 4vmax 4vmax 4vmax; /*1+ move down, 2+ top left,  3+ higher, 4+ right (smaller)  */
+  cursor: pointer;
+  box-shadow: none;
+}
+/* following 3 are mini blocks. currently camouflage but can make font bigger. make big block respecctively bigger */
 
+/* block of current score */
 .scoreboard-score {
-  background: #222;
-  color: var(--color3);
+  background: rgb(34, 34, 34);
+  color: var(--color1); /* changes font colour */
   text-align: center;
   align-self: center;
-  font-size: 2em;
-  grid-column: 1;
+  font-size: 1.9em;
+  grid-column: 1; /* order of 3 columns */ 
   grid-row: 1;
   margin-top: 2vh;
   margin-right: 1vh;
   margin-left: 1vh;
   margin-bottom: 0;
-  font-family: "Permanent Marker", cursive;
+  font-family: serif;
+  /* how did georgia elsewhere */
 }
 
+/* block of currently found words */
 .scoreboard-found-words {
-  background: #222;
-  color: var(--color3);
+  background: rgb(34, 34, 34);
+  color: var(--color1);
   text-align: center;
   align-self: center;
-  font-size: 2em;
+  font-size: 1.9em;
   grid-column: 2;
   grid-row: 1;
   margin-top: 2vh;
   margin-right: 1vh;
   margin-left: 1vh;
   margin-bottom: 0;
-  font-family: "Permanent Marker", cursive;
-}
+  font-family: serif;}
 
+/* block of currently remaining words */
 .scoreboard-words-left {
   background: #222;
-  color: var(--color3);
+  color: var(--color1);
   text-align: center;
   align-self: center;
-  font-size: 2em;
+  font-size: 1.8em;
   grid-column: 3;
   grid-row: 1;
   margin-top: 2vh;
   margin-right: 1vh;
   margin-left: 1vh;
   margin-bottom: 0;
-  font-family: "Permanent Marker", cursive;
-}
+  font-family: serif;}
 
-.timer {
+/* this doesnt work does it? */
+  .timer {
   text-align: center;
   align-self: center;
-  font-size: 1.5em;
+  font-size: 5em;
   grid-column: 3;
   grid-row: 1;
   margin-top: 0;
@@ -166,60 +242,46 @@ body {
   font-family: "Permanent Marker", cursive;
 }
 
-.scoreboard-start-button {
-  display: none;
-  grid-column: 1 / span 3;
-  grid-row: 2;
-  font-family: "Permanent Marker", cursive;
-  padding: 1vmax;
-  background: none;
-  color: var(--color3);
-  border-width: 0;
-  font-weight: bold;
-  font-size: 4rem;
-  margin: 2vmax 2vmax 2vmax 2vmax;
-  cursor: pointer;
-  box-shadow: none;
-}
 
 .scoreboard-surrender-button {
   grid-column: 1 / span 3;
   grid-row: 3;
-  font-family: "Permanent Marker", cursive;
+  font-family: serif;
   padding: 1vmax;
-  background: none;
-  color: var(--color3);
+  background: #D81A0B;
+  color: var(--color1);
   border-width: 0;
   font-weight: bold;
-  font-size: 4rem;
-  margin: 2vmax 2vmax 2vmax 2vmax;
+  font-size: 3rem;
+  margin: 2vmax 6vmax 4vmax 5vmax;
   cursor: pointer;
   box-shadow: none;
 }
 
 .scoreboard-instructions {
   display: none;
-  margin-top: 2vmax;
-  font-family: "Permanent Marker", cursive;
-  font-size: 2.5rem;
-  color: var(--color3);
+  margin-top: 1vmax;
+  font-family: serif;
+  font-size: 4.5rem;
+  color: var(--color1);
   grid-column: 1 / span 3;
   grid-row: 1 / span 3;
 }
 
+/* dont need this anymore */
 .scoreboard-mobile-message {
 /*  display: none;*/
-  margin-top: 2vmax;
+  /* margin-top: 2vmax;
   font-family: "Permanent Marker", cursive;
   font-size: 2.5rem;
   color: var(--color3);
   grid-column: 1 / span 3;
-  grid-row: 1 / span 3;
+  grid-row: 1 / span 3; */
 }
 
 #scrabble {
   justify-self: start;
-  margin: 2vmax 2vmax 2vmax 4vmax;
+  margin: 2vmax 1vmax 2vmax 5vmax; 
   text-align: center;
   display: none;
 }
@@ -237,11 +299,15 @@ body {
   user-select: none;
 }
 
+/* boarder of right - match left *
+YAY CAN CHANGE WIDTH */ 
 .board-border {
   position: relative;
-  background: var(--color3);
-  width: 560px;
-  height: 392px;
+  background: var(--color1);
+  /* inserted: */
+ margin: 10vmax 2vmax 0vmax 10vmax; /*1+ moves down, 2+ moves left, makes board bigger or smaller! */
+  width: 700px;
+  height: 480px;
   padding: 1vmax;
   border-top: 5px solid #444;
   border-right: 5px solid #222;
@@ -249,32 +315,36 @@ body {
   border-left: 5px solid #333;
 }
 
+/* right board itself, match border like on left */
+
 .board-square {
   position: relative;
   background-color: #222;
-  width: 56px;
+  width: 100px;
   height: 56px;
 }
+
 
 .dragged-over {
   background: #111;
 }
 
-.board-square:nth-child(n + 33):nth-child(-n + 40) {
+/* .width-40:.width  */
+ .board-square:nth-child(n + 33):nth-child(-n + 40)  {
   box-sizing: border-box;
-  border-bottom: 5px solid var(--color3);
-  border-top: 5px solid var(--color3);
+  border-bottom: 5px solid var(--color1); 
+  border-top: 5px solid var(--color1);
   background-color: var(--color2);
 }
 
 .board-square:nth-child(33) {
   box-sizing: border-box;
-  border-left: 5px solid var(--color3);
+  border-left: 5px solid var(--color1);
 }
 
 .board-square:nth-child(40) {
   box-sizing: border-box;
-  border-right: 5px solid var(--color3);
+  border-right: 5px solid var(--color1);
 }
 
 .tile {
@@ -282,12 +352,12 @@ body {
   z-index: 2;
   width: 56px;
   height: 56px;
-  background: var(--color3);
+  background: var(--color1);
   cursor: move;
   border-radius: 1px;
   border-color: white;
-  box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
-    2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259;
+  box-shadow: 0.5px 0.5px 0 #eee, 1px 1px 0 #eee, 1.5px 1.5px 0 #eee,
+    2px 2px 0 #eee, 2.5px 2.5px 0 #eee, 3px 3px 0 #eee;
 }
 
 .is-dragging {
@@ -295,7 +365,7 @@ body {
 }
 
 .is-established {
-  background: yellow;
+  background: #eee;
 }
 
 .draggable {
@@ -334,33 +404,37 @@ body {
   margin-bottom: 2vmax;
 }
 
+
 .resultsmodal {
 }
 
-.resultsmodal-title {
+.resultsmodal-title { /* "Results" */
   text-align: center;
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: bold;
   color: #222;
-  line-height: 6rem;
+  line-height: 13rem; /* got rid of huge white space fixed everything header */
 }
 
 .resultsmodal-scoreboard {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 3 cols in found etc.. */
   grid-template-rows: 1;
 }
-.resultsmodal-subheader {
-  font-size: 2rem;
+.resultsmodal-subheader { /*found, final score, missed, words found & missed */
+  font-size: 2.1rem;
   font-weight: bold;
-  color: #222;
+  color: rgb(34, 34, 34);
+  line-height: 20px; /* alignment */
 }
 
-.resultsmodal-finalscore {
-  font-size: 2rem;
+.resultsmodal-finalscore { /* numbers */
+  font-size: 5rem;
   margin-bottom: 0;
   font-weight: bold;
-  color: #222;
+  color: rgb(34, 34, 34);
+  line-height: 100px; /* alignment */
+
 }
 
 .resultsmodal-body {
@@ -368,14 +442,14 @@ body {
   padding: 0vmax 4vmax;
 }
 
-.resultsmodal-wordsfound {
+.resultsmodal-wordsfound { /* text under words found */
   font-family: var(--first-font);
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 .resultsmodal-remainingwords {
   font-family: var(--first-font);
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 .resultsmodal-footer {
@@ -386,14 +460,14 @@ body {
 #resultsmodal-footer-button {
   margin-top: 1vmax;
   margin-bottom: 1vmax;
-  padding: 1vmax 2vmax;
+  padding: 1vmax 2vmax; /* how much red around words */
   transition: 0.25s ease-in-out;
-  background: #ffd959;
-  color: #222;
+  background: #D81A0B;
+  color: #eee;
   border-width: 0;
-  font-size: 3rem;
+  font-size: 2rem; /* changes size of whole button */
   font-weight: bold;
-  margin: 2vmax 2vmax 2vmax 2vmax;
+  margin: -95vmax 0vmax 0vmax 19vmax; /*1st+ down, 2+  left, 3rd whole thing up down 4th+ right */
   cursor: pointer;
 }
 
@@ -412,16 +486,17 @@ body {
   align-items: center;
 }
 
+/* around button */
 button {
   padding: 1vmax;
   transition: 0.25s ease-in-out;
-  background: #ffd959;
+  background: #222;
   color: #222;
   border-width: 0;
   margin: 2vmax 2vmax 2vmax 2vmax;
   cursor: pointer;
-  box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
-    2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259;
+  /* box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
+    2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259; */
 }
 
 button:focus {
@@ -438,79 +513,45 @@ hr {
   margin-bottom: 1vmax;
 }
 
-
-@media only screen and (min-width: 1023px) {
+/* this changes the things on the main screen!!! */
+@media only screen /*and (min-width: 1023px)*/ {
   /* For desktop: */
-  .App {
+  
+  /* commenting this doesnt seem to do much */
+  
+  /* .App {
     text-align: center;
     align-content: center;
     justify-content: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 20vmin 75vmin 5vmin;
-  }
+  } */
 
   .corner {
     display: inline;
   }
 
-  .app-header {
-    background-color: var(--color2);
-    font-size: 1rem;
-    grid-column: 1 / span 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  /* HERE header is  */
+   .app-header {
+    /* background-color: var(--color3); */
+    /* font-size: .1rem; */
+    /* grid-column: 1 / span 5; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+  } 
 
-  .app-title-container {
-    grid-column: 3;
-    margin: 1vmax -1.2em 1vmax 2vmax;
-    padding: 0vmax 1vmax;
-    align-self: center;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--color3);
-    background: #222;
-  }
-
-  .app-title {
-    margin: 0.5vmax -2rem 0.5vmax 0.5vmax;
-    letter-spacing: 3rem;
-    font-size: 4rem;
-    line-height: 56px;
-    text-align: center;
-    font-weight: 700;
-  }
-
+  
+  /* displays right side */
   #scrabble {
     display: block;
   }
 
-  .scoreboard-wrapper {
-    justify-self: end;
-    color: #eee;
-    background: var(--color3);
-    margin: 2vmax 4vmax 2vmax 2vmax;
-    padding: 1vmax;
-    max-width: 560px;
-    grid-column: span 1;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    height: 392px;
-    border-top: 5px solid #444;
-    border-right: 5px solid #222;
-    border-bottom: 5px solid #222;
-    border-left: 5px solid #333;
-  }
-
-  .scoreboard-mobile-message {
+ 
+  /* .scoreboard-mobile-message {
     display: none;
-  }
+  } */
 
   .scoreboard-start-button {
     display: inline;
