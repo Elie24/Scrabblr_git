@@ -241,7 +241,7 @@ body {
 .board-border {
   position: relative;
   background: var(--color3);
-  width: 850px;
+  width: 600px;
   height: 450px;
   padding: 1vmax;
   border-top: 5px solid #444;
