@@ -24,8 +24,9 @@ maintit *:after {
 }
 
 body {
-  background: var(--color1);
-  background-size: 64px 128px;
+  /* changes background colour but cant change size */
+  background: var(--color1); 
+  background-size: 800px 1280px;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -65,7 +66,7 @@ body {
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--color3);
-  background: #222;
+  background: rgb(197, 77, 77);
 }
 
 .app-title {
@@ -83,11 +84,11 @@ body {
 
 .scoreboard-wrapper {
 /*  justify-self: end;*/
-  color: #eee;
+  color: rgb(231, 99, 99);
   background: var(--color3);
-  margin: 2vmax 2vmax 2vmax 2vmax;
+  margin: 2vmax 15vmax 2vmax 0vmax;
   padding: 1vmax;
-  max-width: 560px;
+  max-width: 0px;
   grid-column: span 1;
   grid-row: 2;
   grid-template-columns: repeat(2, 1fr);
@@ -99,7 +100,7 @@ body {
   border-left: 5px solid #333;
 }
 
-.scoreboard {
+/* .scoreboard {
   color: #eee;
   background: #222;
   grid-column: span 1;
@@ -108,7 +109,7 @@ body {
   grid-template-rows: repeat(3, 1fr);
   padding: 0vmax 2vmax 0vmax 2vmax;
   height: 392px;
-}
+} */
 
 .scoreboard-score {
   background: #222;
@@ -155,7 +156,7 @@ body {
   font-family: "Permanent Marker", cursive;
 }
 
-.timer {
+/* .timer {
   text-align: center;
   align-self: center;
   font-size: 1.5em;
@@ -164,7 +165,7 @@ body {
   margin-top: 0;
   margin-bottom: 0;
   font-family: "Permanent Marker", cursive;
-}
+} */
 
 .scoreboard-start-button {
   display: none;
@@ -197,7 +198,7 @@ body {
   box-shadow: none;
 }
 
-.scoreboard-instructions {
+ .scoreboard-instructions {
   display: none;
   margin-top: 2vmax;
   font-family: "Permanent Marker", cursive;
@@ -205,7 +206,7 @@ body {
   color: var(--color3);
   grid-column: 1 / span 3;
   grid-row: 1 / span 3;
-}
+} 
 
 .scoreboard-mobile-message {
 /*  display: none;*/
@@ -234,14 +235,14 @@ body {
 .board {
   display: flex;
   flex-wrap: wrap;
-  user-select: none;
+  /* user-select: none; */
 }
 
 .board-border {
   position: relative;
   background: var(--color3);
-  width: 560px;
-  height: 392px;
+  width: 750px;
+  height: 450px;
   padding: 1vmax;
   border-top: 5px solid #444;
   border-right: 5px solid #222;
@@ -252,7 +253,7 @@ body {
 .board-square {
   position: relative;
   background-color: #222;
-  width: 56px;
+  width: 50px;
   height: 56px;
 }
 
@@ -439,6 +440,7 @@ hr {
 }
 
 
+/* this is where things change */
 @media only screen and (min-width: 1023px) {
   /* For desktop: */
   .App {
@@ -463,6 +465,7 @@ hr {
     justify-content: center;
   }
 
+  /* currently hidden around title - doesnt really matter?*/ 
   .app-title-container {
     grid-column: 3;
     margin: 1vmax -1.2em 1vmax 2vmax;
@@ -478,11 +481,12 @@ hr {
     background: #222;
   }
 
+  /* change size of letters */
   .app-title {
     margin: 0.5vmax -2rem 0.5vmax 0.5vmax;
     letter-spacing: 3rem;
     font-size: 4rem;
-    line-height: 56px;
+    line-height: 100px;
     text-align: center;
     font-weight: 700;
   }
@@ -491,6 +495,7 @@ hr {
     display: block;
   }
 
+/*   
   .scoreboard-wrapper {
     justify-self: end;
     color: #eee;
@@ -506,7 +511,7 @@ hr {
     border-right: 5px solid #222;
     border-bottom: 5px solid #222;
     border-left: 5px solid #333;
-  }
+  } */
 
   .scoreboard-mobile-message {
     display: none;
