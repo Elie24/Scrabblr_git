@@ -15,6 +15,33 @@ import ResultsModal from "./ResultsModal";
 // external components
 import GithubCorner from "react-github-corner";
 
+// FIREBASE
+// Firebase App (the core Firebase SDK) is always required and
+// must be listed before other Firebase SDKs
+import * as firebase from "firebase/app";
+
+// Add the Firebase services that you want to use
+import "firebase/firestore";
+import "firebase/auth";
+import "firebase/database";
+
+// TODO: Replace the following with your app's Firebase project configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyCvjonurYN_HdYH1FEgDA2rJMfypwxVPZU",
+  authDomain: "scrabblr-firebase.firebaseapp.com",
+  databaseURL: "https://scrabblr-firebase.firebaseio.com",
+  projectId: "scrabblr-firebase",
+  storageBucket: "",
+  messagingSenderId: "64749630386",
+  appId: "1:64749630386:web:54139cd5b63a6c45"
+};
+
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// FIREBASE
+
 // make a new context
 const MyContext = React.createContext();
 
@@ -357,3 +384,4 @@ export default App;
 
 // export context
 export { MyContext };
+

@@ -257,20 +257,23 @@ body {
   height: 56px;
 }
 
+/* when its in the tile, interesting */
 .dragged-over {
-  background: #111;
+  background: rgb(218, 5, 5);
 }
 
-.board-square:nth-child(n + 33):nth-child(-n + 40) {
+/* every n for 33 -> 40 -n (how many is n?) */
+/* always 7 apart */
+.board-square:nth-child(n + 33):nth-child(40-n) {
   box-sizing: border-box;
-  border-bottom: 5px solid var(--color3);
-  border-top: 5px solid var(--color3);
-  background-color: var(--color2);
+  border-bottom: 5px solid var(--color1);
+  border-top: 5px solid var(--color1);
+  background-color: var(--color1);
 }
 
 .board-square:nth-child(33) {
   box-sizing: border-box;
-  border-left: 5px solid var(--color3);
+  border-left: 5px solid #eee;
 }
 
 .board-square:nth-child(40) {
