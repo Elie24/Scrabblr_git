@@ -206,7 +206,7 @@ body {
   display: none;
   margin-top: 1vmax;
   font-family: serif;
-  font-size: 4.5rem;
+  font-size: 4rem;
   color: var(--color1);
   grid-column: 1 / span 3;
   grid-row: 1 / span 3;
