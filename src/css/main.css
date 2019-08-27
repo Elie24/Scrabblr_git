@@ -84,12 +84,12 @@ body {
 
 .scoreboard-wrapper {
 /*  justify-self: end;*/
-  color: rgb(194, 99, 231);
+  /* color: rgb(194, 99, 231); */
   background: var(--color1);
-   margin: 2vmax 0vmax 2vmax 0vmax; 
+   margin: 2vmax -10vmax 2vmax 5vmax; 
   /* margin: -10vmax -12vmax 0vmax -10vmax; 1+ moves down, 2+ moves left, makes board bigger or smaller! */
   padding: 1vmax;
-  max-width: 300px;
+  max-width: 400px;
   grid-column: span 1;
   grid-row: 2;
   grid-template-columns: repeat(2, 1fr);
@@ -184,7 +184,7 @@ body {
   border-width: 0;
   font-weight: bold;
   font-size: 5rem;
-  margin: 6vmax 4vmax 4vmax 4vmax; /*1+ move down, 2+ top left,  3+ higher, 4+ right (smaller)  */
+  margin: 10vmax 4vmax 2vmax 4vmax; /*1+ move down, 2+ top left,  3+ higher, 4+ right (smaller)  */
   cursor: pointer;
   box-shadow: none;
 }
@@ -247,10 +247,10 @@ body {
 .board-border {
   position: relative;
   background: var(--color2);
-  margin: -5vmax 2vmax 2vmax 2vmax;
+  margin: -5vmax 2vmax 2vmax 20vmax; 
   width: 560px;
   height: 500px;
-  padding: 1vmax;
+  padding: 2vmax;
   border-top: 5px solid #444;
   border-right: 5px solid #222;
   border-bottom: 5px solid #222;
