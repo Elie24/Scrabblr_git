@@ -25,6 +25,7 @@ import "firebase/firestore";
 import "firebase/auth";
 import "firebase/database";
 
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 // TODO: Replace the following with your app's Firebase project configuration
 var firebaseConfig = {
   apiKey: "AIzaSyCvjonurYN_HdYH1FEgDA2rJMfypwxVPZU",
@@ -218,7 +219,7 @@ class MyProvider extends React.Component {
       return a.x > b.x ? 1 : b.x > a.x ? -1 : 0;
     });
 
-    let containsALetter = function(element, index) {
+    let containsALetter = function (element, index) {
       return element.x === index + 1;
     };
 
@@ -315,7 +316,7 @@ class MyProvider extends React.Component {
     audio.volume = 0.2;
     let playPromise = audio.play();
 
-    playPromise.then(function() {}).catch(function(error) {
+    playPromise.then(function () { }).catch(function (error) {
       console.log(error);
     });
   };
@@ -349,9 +350,43 @@ class MyProvider extends React.Component {
 
 // render main app component
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    let provider = new firebase.auth.GoogleAuthProvider();
+    this.state = {isSignedIn:false}
+
+    firebase.auth().onAuthStateChanged((user)=>{
+      if (user){
+        this.setState({
+          isSignedIn: true,
+          user: user
+        })
+        let db = firebase.firestore()
+        console.log(this.state.user.displayName)
+        console.log(this.state.user.uid)
+        db.collection('users').doc(this.state.user.uid).set({
+          //name: this.state.user.displayName
+          testfield: 'hello'
+        }).catch((error)=>{console.log(error,"completed update")})
+      }else{
+           firebase.auth().signInWithPopup(provider).then((result)=> {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // The signed-in user info.
+            var user = result.user;
+          });
+        this.setState({
+          isSignedIn:false
+        })
+      }
+    }
+    )
+  }
   render() {
-    return (
-      <MyProvider>
+    let view;
+    if (this.state.isSignedIn) {
+    //var user = firebase.auth().currentUser;
+      view = (<MyProvider>
         <MyContext.Consumer>
           {context => (
             <React.Fragment>
@@ -374,7 +409,20 @@ class App extends React.Component {
             </React.Fragment>
           )}
         </MyContext.Consumer>
-      </MyProvider>
+      </MyProvider>)
+    }
+    else {
+      view = (
+      <div>
+        Please Sign In
+      </div>
+      )
+    }
+    return (
+      <div>
+        {view}
+      </div>
+
     );
   }
 }
