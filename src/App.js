@@ -350,48 +350,15 @@ class MyProvider extends React.Component {
 
 // render main app component
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    let provider = new firebase.auth.GoogleAuthProvider();
-    this.state = {isSignedIn:false}
-
-    firebase.auth().onAuthStateChanged((user)=>{
-      if (user){
-        this.setState({
-          isSignedIn: true,
-          user: user
-        })
-        let db = firebase.firestore()
-        console.log(this.state.user.displayName)
-        console.log(this.state.user.uid)
-        db.collection('users').doc(this.state.user.uid).set({
-          //name: this.state.user.displayName
-          testfield: 'hello'
-        }).catch((error)=>{console.log(error,"completed update")})
-      }else{
-           firebase.auth().signInWithPopup(provider).then((result)=> {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            var token = result.credential.accessToken;
-            // The signed-in user info.
-            var user = result.user;
-          });
-        this.setState({
-          isSignedIn:false
-        })
-      }
-    }
-    )
-  }
   render() {
-    let view;
-    if (this.state.isSignedIn) {
-    //var user = firebase.auth().currentUser;
-      view = (<MyProvider>
+    return (
+      <MyProvider>
         <MyContext.Consumer>
           {context => (
             <React.Fragment>
-              <GithubCorner
-                href="https://github.com/nvincenthill/word-flipper"
+              <GithubCorner //this changes the corner guy
+                //href="https://github.com/nvincenthill/word-flipper" got rid of the link
+                //this is how we do buttons??
                 octoColor="#222"
                 bannerColor="#ffd959"
                 className="corner"
@@ -409,20 +376,7 @@ class App extends React.Component {
             </React.Fragment>
           )}
         </MyContext.Consumer>
-      </MyProvider>)
-    }
-    else {
-      view = (
-      <div>
-        Please Sign In
-      </div>
-      )
-    }
-    return (
-      <div>
-        {view}
-      </div>
-
+      </MyProvider>
     );
   }
 }
@@ -432,4 +386,92 @@ export default App;
 
 // export context
 export { MyContext };
+
+
+// // render main app component
+// class App extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     let provider = new firebase.auth.GoogleAuthProvider();
+//     this.state = {isSignedIn:false}
+
+//     firebase.auth().onAuthStateChanged((user)=>{
+//       if (user){
+//         this.setState({
+//           isSignedIn: true, /*make this false makes please sign in */
+//           user: user
+//         })
+//         let db = firebase.firestore()
+//         // console.log(this.state.user.displayName)
+//         // console.log(this.state.user.uid)
+//         // db.collection('users').doc(this.state.user.uid).set({
+//           db.collection('users').doc('kartoshki').set({
+//           //name: this.state.user.displayName
+//           // testfield: "hello"
+//           name: "kartoshka" });
+//           // .catch((error)=>{console.log(error,"completed update")})
+//       }else{
+//            firebase.auth().signInWithPopup(provider).then((result)=> {
+//             // This gives you a Google Access Token. You can use it to access the Google API.
+//             var token = result.credential.accessToken;
+//             // The signed-in user info.
+//             var user = result.user;
+//           });
+//         this.setState({
+//           isSignedIn:true
+//         })
+//       }
+//     }
+//     )
+//   }
+//   render() {
+//     let view;
+//     if (this.state.isSignedIn) {
+//     //var user = firebase.auth().currentUser;
+//       view = (<MyProvider>
+//         <MyContext.Consumer>
+//           {context => (
+//             <React.Fragment>
+//               <GithubCorner
+//                 href="https://github.com/nvincenthill/word-flipper"
+//                 octoColor="#222"
+//                 bannerColor="#ffd959"
+//                 className="corner"
+//                 size={100}
+//               />
+//               <div className="App">
+//                 <Header />
+//                 <GameArea />
+//                 <Scoreboard />
+//                 <Footer />
+//               </div>
+//               <ResultsModal
+//                 handleCloseResultsModal={context.handleCloseResultsModal}
+//               />
+//             </React.Fragment>
+//           )}
+//         </MyContext.Consumer>
+//       </MyProvider>)
+//     }
+//     else {
+//       view = (
+//       <div>
+//         Please Sign In
+//       </div>
+//       )
+//     }
+//     return (
+//       <div>
+//         {view}
+//       </div>
+
+//     );
+//   }
+// }
+
+// // export app component
+// export default App;
+
+// // export context
+// export { MyContext };
 
