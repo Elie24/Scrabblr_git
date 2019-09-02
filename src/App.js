@@ -26,25 +26,29 @@ import "firebase/auth";
 import "firebase/database";
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-// TODO: Replace the following with your app's Firebase project configuration
+
 var firebaseConfig = {
-  apiKey: "AIzaSyCvjonurYN_HdYH1FEgDA2rJMfypwxVPZU",
-  authDomain: "scrabblr-firebase.firebaseapp.com",
-  databaseURL: "https://scrabblr-firebase.firebaseio.com",
-  projectId: "scrabblr-firebase",
+  apiKey: "AIzaSyDU_zM9IlS72lN_cJ1c1NETXiRHbAUOxoU",
+  authDomain: "scrabblr2.firebaseapp.com",
+  databaseURL: "https://scrabblr2.firebaseio.com",
+  projectId: "scrabblr2",
   storageBucket: "",
-  messagingSenderId: "64749630386",
-  appId: "1:64749630386:web:54139cd5b63a6c45"
+  messagingSenderId: "534918066080",
+  appId: "1:534918066080:web:1c90396f4b9d19c8"
 };
-
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+// Initialize Cloud Firestore through Firebase
+
+
 // FIREBASE
+
+
 
 // make a new context
 const MyContext = React.createContext();
+
 
 // then create a provider Component
 class MyProvider extends React.Component {
@@ -53,6 +57,7 @@ class MyProvider extends React.Component {
     this.state = InitialState;
   }
 
+  
   // set tiles at starting position
   resetTilePositions = () => {
     for (let i = 0; i < this.state.tiles.length; i++) {
@@ -63,6 +68,7 @@ class MyProvider extends React.Component {
     }
   };
 
+  
   // find all valid English words for a string of characters
   generateMatches = letters => {
     // get an array of all possible permutations
@@ -156,6 +162,8 @@ class MyProvider extends React.Component {
     this.checkVictoryConditions();
   };
 
+
+
   // end game if all matches are found
   checkVictoryConditions = () => {
     if (this.state.remainingMatches.length === 0) {
@@ -191,7 +199,15 @@ class MyProvider extends React.Component {
       result += this.state.scoreHash[letters[i]].points;
     }
     this.incrementScore(result);
-  };
+      // function writescore(score) {
+      //   firebase.database().ref('score').set({
+      //   result: score
+      //   });
+      // }
+
+    };
+
+    
 
   // get random word from dictionary with length of n
   getWordFromDictionary = lengthOfWord => {
@@ -326,6 +342,7 @@ class MyProvider extends React.Component {
     this.setState({ tiles: this.state.startingTiles });
   };
 
+  
   // render provider component
   render() {
     return (
@@ -352,7 +369,9 @@ class MyProvider extends React.Component {
 class App extends React.Component {
   render() {
     return (
+
       <MyProvider>
+        
         <MyContext.Consumer>
           {context => (
             <React.Fragment>
@@ -386,6 +405,20 @@ export default App;
 
 // export context
 export { MyContext };
+
+console.log('result');
+// let data = { result };
+
+var db = firebase.firestore();
+db.collection("users_score").add({
+  first: "result",
+})
+.then(function(docRef) {
+  console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+  console.error("Error adding document: ", error);
+});
 
 
 // // render main app component
