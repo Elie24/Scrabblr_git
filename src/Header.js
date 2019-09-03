@@ -3,6 +3,7 @@ import React from "react";
 // context from provider
 import { MyContext } from "./App.js";
 
+
 class Header extends React.Component {
   componentWillMount() {}
   componentDidMount() {}
@@ -10,6 +11,7 @@ class Header extends React.Component {
   componentWillUnmount() {}
   render() {
     return (
+      
       <MyContext.Consumer>
         {context => (
           <header className="app-header">

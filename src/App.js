@@ -160,8 +160,26 @@ class MyProvider extends React.Component {
     let newScore = this.state.score + scoreOfWord;
     this.setState({ score: newScore });
     this.checkVictoryConditions();
-  };
 
+        var db = firebase.firestore();
+        db.collection("Top score").doc("new score").set({
+        // db.collection("individual scores").add({
+
+        first: newScore,
+        })
+        .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
+
+    // var cityRef = db.collection('individual scores').doc('will this workk');
+
+    // var setWithMerge = cityRef.set({
+    // capital: true
+    // }, { merge: true });
+  };
 
 
   // end game if all matches are found
@@ -199,15 +217,8 @@ class MyProvider extends React.Component {
       result += this.state.scoreHash[letters[i]].points;
     }
     this.incrementScore(result);
-      // function writescore(score) {
-      //   firebase.database().ref('score').set({
-      //   result: score
-      //   });
-      // }
-
-    };
-
     
+  };
 
   // get random word from dictionary with length of n
   getWordFromDictionary = lengthOfWord => {
@@ -406,19 +417,8 @@ export default App;
 // export context
 export { MyContext };
 
-console.log('result');
-// let data = { result };
 
-var db = firebase.firestore();
-db.collection("users_score").add({
-  first: "result",
-})
-.then(function(docRef) {
-  console.log("Document written with ID: ", docRef.id);
-})
-.catch(function(error) {
-  console.error("Error adding document: ", error);
-});
+
 
 
 // // render main app component

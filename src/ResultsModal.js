@@ -101,4 +101,5 @@ class ResultsModal extends React.Component {
     );
   }
 }
+
 export default ResultsModal;
