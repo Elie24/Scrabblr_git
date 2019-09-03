@@ -1,4 +1,5 @@
 // this is a react app
+
 import React from "react";
 
 // data
@@ -15,6 +16,7 @@ import ResultsModal from "./ResultsModal";
 // external components
 import GithubCorner from "react-github-corner";
 
+
 // FIREBASE
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
@@ -24,27 +26,32 @@ import * as firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import "firebase/database";
+import withFirebaseAuth from 'react-with-firebase-auth'
+import firebaseConfig from './firebaseConfig';
+
+// import logo from './logo.png' // relative path to image 
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-var firebaseConfig = {
-  apiKey: "AIzaSyDU_zM9IlS72lN_cJ1c1NETXiRHbAUOxoU",
-  authDomain: "scrabblr2.firebaseapp.com",
-  databaseURL: "https://scrabblr2.firebaseio.com",
-  projectId: "scrabblr2",
-  storageBucket: "",
-  messagingSenderId: "534918066080",
-  appId: "1:534918066080:web:1c90396f4b9d19c8"
-};
+// var firebaseConfig = {
+//   apiKey: "AIzaSyDU_zM9IlS72lN_cJ1c1NETXiRHbAUOxoU",
+//   authDomain: "scrabblr2.firebaseapp.com",
+//   databaseURL: "https://scrabblr2.firebaseio.com",
+//   projectId: "scrabblr2",
+//   storageBucket: "",
+//   messagingSenderId: "534918066080",
+//   appId: "1:534918066080:web:1c90396f4b9d19c8"
+// };
+
+
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-// Initialize Cloud Firestore through Firebase
-
-
-// FIREBASE
-
-
+const firebaseAppAuth = firebaseApp.auth();
+const providers = {
+  googleProvider: new firebase.auth.GoogleAuthProvider(),
+};
 
 // make a new context
 const MyContext = React.createContext();
@@ -376,9 +383,16 @@ class MyProvider extends React.Component {
   }
 }
 
+
 // render main app component
 class App extends React.Component {
   render() {
+    const {
+      user,
+      signOut,
+      signInWithGoogle,
+    } = this.props;
+
     return (
 
       <MyProvider>
@@ -395,13 +409,29 @@ class App extends React.Component {
                 size={100}
               />
               <div className="App">
+                <header className="App-header">
+                {/* <img src={logo} className="App-logo" alt="logo" /> */}
+                {
+                  user 
+                  ? <p>Hello, {user.displayName}</p>
+                  : <p>Please sign in.</p>
+                }
+                {
+                  user
+                  ? <button onClick={signOut}>Sign out</button>
+                  : <button onClick={signInWithGoogle}>Sign in with Google</button>
+                }
+                </header>
+
                 <Header />
                 <GameArea />
                 <Scoreboard />
                 <Footer />
+                  
               </div>
               <ResultsModal
                 handleCloseResultsModal={context.handleCloseResultsModal}
+                
               />
             </React.Fragment>
           )}
@@ -412,7 +442,14 @@ class App extends React.Component {
 }
 
 // export app component
-export default App;
+// export default App;
+
+export default withFirebaseAuth({
+  providers,
+  firebaseAppAuth,
+})(App);
+
+
 
 // export context
 export { MyContext };
