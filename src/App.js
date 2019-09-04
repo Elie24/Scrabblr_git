@@ -32,6 +32,7 @@ import firebaseConfig from './firebaseConfig';
 // import logo from './logo.png' // relative path to image 
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { reactReduxFirebase } from "react-redux-firebase";
 
 // var firebaseConfig = {
 //   apiKey: "AIzaSyDU_zM9IlS72lN_cJ1c1NETXiRHbAUOxoU",
@@ -169,22 +170,48 @@ class MyProvider extends React.Component {
     this.checkVictoryConditions();
 
         var db = firebase.firestore();
-        db.collection("Top score").doc("new score").set({
-        // db.collection("individual scores").add({
+        var userid = firebase.auth().currentUser.displayName;
+        console.log('userid for high score',userid)
+        
+        db.collection("Top").doc(userid).update({
 
-        first: newScore,
-        })
-        .then(function(docRef) {
-          console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function(error) {
-          console.error("Error adding document: ", error);
-        });
+          // db.collection("individual scores").add({
+            
+          // first: newScore,
+        first: firebase.firestore.FieldValue.arrayUnion(newScore),
+          
+          
+          })
+          
+          .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+          })
+          .catch(function(error) {
+            console.error("Error adding document: ", error);
+          });
 
-    // var cityRef = db.collection('individual scores').doc('will this workk');
+          
+
+        // db.collection("Top").doc(userid).update({
+
+        // // db.collection("individual scores").add({
+          
+        // first: firebase.firestore.FieldValue.arrayUnion(newScore),
+        
+        
+        // })
+        
+        // .then(function(docRef) {
+        //   console.log("Document written with ID: ", docRef.id);
+        // })
+        // .catch(function(error) {
+        //   console.error("Error adding document: ", error);
+        // });
+
+    // var cityRef = db.collection("Top score").doc("elie");
 
     // var setWithMerge = cityRef.set({
-    // capital: true
+    //   first: newScore,
     // }, { merge: true });
   };
 
@@ -392,7 +419,15 @@ class App extends React.Component {
       signOut,
       signInWithGoogle,
     } = this.props;
-
+    let view;
+    if (user){
+    view = (<React.Fragment>
+      <Header />
+      <GameArea />
+      <Scoreboard />
+      <Footer />
+        </React.Fragment>)
+      }
     return (
 
       <MyProvider>
@@ -400,34 +435,16 @@ class App extends React.Component {
         <MyContext.Consumer>
           {context => (
             <React.Fragment>
-              <GithubCorner //this changes the corner guy
-                //href="https://github.com/nvincenthill/word-flipper" got rid of the link
-                //this is how we do buttons??
-                octoColor="#222"
-                bannerColor="#ffd959"
-                className="corner"
-                size={100}
-              />
               <div className="App">
-                <header className="App-header">
-                {/* <img src={logo} className="App-logo" alt="logo" /> */}
-                {
-                  user 
-                  ? <p>Hello, {user.displayName}</p>
-                  : <p>Please sign in.</p>
-                }
                 {
                   user
-                  ? <button onClick={signOut}>Sign out</button>
+                  ? <React.Fragment/>
                   : <button onClick={signInWithGoogle}>Sign in with Google</button>
-                }
-                </header>
-
-                <Header />
-                <GameArea />
-                <Scoreboard />
-                <Footer />
                   
+                }
+                
+                  {view}
+    
               </div>
               <ResultsModal
                 handleCloseResultsModal={context.handleCloseResultsModal}
@@ -440,6 +457,7 @@ class App extends React.Component {
     );
   }
 }
+
 
 // export app component
 // export default App;
@@ -471,6 +489,7 @@ export { MyContext };
 //           isSignedIn: true, /*make this false makes please sign in */
 //           user: user
 //         })
+//    }
 //         let db = firebase.firestore()
 //         // console.log(this.state.user.displayName)
 //         // console.log(this.state.user.uid)

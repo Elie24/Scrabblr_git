@@ -432,9 +432,9 @@ button {
   padding: 1vmax;
   transition: 0.25s ease-in-out;
   background: #222;
-  color: #222;
+  color:#eee; /*words */
   border-width: 0;
-  margin: 20vmax 2vmax 2vmax 2vmax;
+  margin: 2vmax 2vmax 2vmax 2vmax;
   cursor: pointer;
   /* box-shadow: 0.5px 0.5px 0 #bda259, 1px 1px 0 #bda259, 1.5px 1.5px 0 #bda259,
     2px 2px 0 #bda259, 2.5px 2.5px 0 #bda259, 3px 3px 0 #bda259; */
