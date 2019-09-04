@@ -173,7 +173,7 @@ class MyProvider extends React.Component {
         var userid = firebase.auth().currentUser.displayName;
         console.log('userid for high score',userid)
         
-        db.collection("Top").doc(userid).update({
+        db.collection("Top2").doc(userid).update({
 
           // db.collection("individual scores").add({
             
@@ -181,14 +181,14 @@ class MyProvider extends React.Component {
         first: firebase.firestore.FieldValue.arrayUnion(newScore),
           
           
-          })
-          
-          .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-          })
-          .catch(function(error) {
-            console.error("Error adding document: ", error);
           });
+          
+          // .then(function(docRef) {
+          //   console.log("Document written with ID: ", docRef.id);
+          // })
+          // .catch(function(error) {
+          //   console.error("Error adding document: ", error);
+          // });
 
           
 
