@@ -27,27 +27,27 @@ import "firebase/firestore";
 import "firebase/auth";
 import "firebase/database";
 import withFirebaseAuth from 'react-with-firebase-auth'
-import firebaseConfig from './firebaseConfig';
+// import firebaseConfig from './firebaseConfig';
 
 // import logo from './logo.png' // relative path to image 
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { reactReduxFirebase } from "react-redux-firebase";
 
-// var firebaseConfig = {
-//   apiKey: "AIzaSyDU_zM9IlS72lN_cJ1c1NETXiRHbAUOxoU",
-//   authDomain: "scrabblr2.firebaseapp.com",
-//   databaseURL: "https://scrabblr2.firebaseio.com",
-//   projectId: "scrabblr2",
-//   storageBucket: "",
-//   messagingSenderId: "534918066080",
-//   appId: "1:534918066080:web:1c90396f4b9d19c8"
-// };
+var config = {
+  apiKey: "AIzaSyDU_zM9IlS72lN_cJ1c1NETXiRHbAUOxoU",
+  authDomain: "scrabblr2.firebaseapp.com",
+  databaseURL: "https://scrabblr2.firebaseio.com",
+  projectId: "scrabblr2",
+  storageBucket: "",
+  messagingSenderId: "534918066080",
+  appId: "1:534918066080:web:1c90396f4b9d19c8"
+};
 
 
 // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(config);
+const firebaseApp = firebase.initializeApp(config);
 
 const firebaseAppAuth = firebaseApp.auth();
 const providers = {
