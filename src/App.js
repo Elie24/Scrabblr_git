@@ -436,12 +436,12 @@ class App extends React.Component {
           {context => (
             <React.Fragment>
               <div className="App">
-                {
+                {/* {
                   user
                   ? <React.Fragment/>
                   : <button onClick={signInWithGoogle}>Sign in with Google</button>
                   
-                }
+                } */}
                 
                   {view}
     
