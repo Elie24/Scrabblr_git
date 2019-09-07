@@ -173,7 +173,7 @@ class MyProvider extends React.Component {
         var userid = firebase.auth().currentUser.displayName;
         console.log('userid for high score',userid)
         
-        db.collection("Top2").doc(userid).update({
+        db.collection("Top2").doc(userid).set({
 
           // db.collection("individual scores").add({
             
@@ -436,12 +436,12 @@ class App extends React.Component {
           {context => (
             <React.Fragment>
               <div className="App">
-                {/* {
+                {
                   user
                   ? <React.Fragment/>
                   : <button onClick={signInWithGoogle}>Sign in with Google</button>
                   
-                } */}
+                }
                 
                   {view}
     
